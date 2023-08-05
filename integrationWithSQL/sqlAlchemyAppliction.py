@@ -69,7 +69,7 @@ print(inspetor_engine.default_schema_name)
 
 with Session(engine) as session:
     Nalva = User(
-        name='Nalva', fullname='Nalva Costa',
+        name='nalva', fullname='Nalva Costa',
         address=[Address(email_address='nbella@email.com')]
     )
 
@@ -119,5 +119,4 @@ stmt_count = select(func.count('*')).select_from(User)
 print('\nTotal de instâncias em User')
 for result in session.scalars(stmt_count):
     print(result)
-
 # encerrando de fato a session

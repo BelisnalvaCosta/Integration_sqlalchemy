@@ -28,13 +28,13 @@ pprint.pprint(db.posts.find_one())
 #bulk inserts
 new_posts = [{
             "author": "Ana Paula",
-            "text": "Another post",
-            "tags": ["bulk", "post", "insert"],
-            "date": datetime.datetime.utcnow()},
+            "text": "Rua Sete de Setembro, 45 - São Paulo",
+            "tags": ["00000000911", "post", "insert"],
+            "date": datetime.datetime.utcnow(2009, 23, 15, 5)},
             {
             "author": "Roberto Alves",
             "text": "Post from Roberto. New post available",
-            "title": "Mongo is fun",
+            "title": "Parabéns, foi efetuado com sucesso!",
             "date": datetime.datetime(2021, 15, 10, 20, 47)}]
 
 result = posts.insert_many(new_posts)
