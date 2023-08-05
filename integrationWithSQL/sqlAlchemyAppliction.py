@@ -68,33 +68,31 @@ print(inspetor_engine.get_table_names())
 print(inspetor_engine.default_schema_name)
 
 with Session(engine) as session:
-    juliana = User(
-        name='juliana',
-        fullname='Juliana Mascarenhas',
-        address=[Address(email_address='julianam@email.com')]
+    Nalva = User(
+        name='Nalva', fullname='Nalva Costa',
+        address=[Address(email_address='nbella@email.com')]
     )
 
-    sandy = User(
-        name='sandy',
-        fullname='Sandy Cardoso',
-        address=[Address(email_address='sandy@email.br'),
-                 Address(email_address='sandyc@email.org')]
+    Ana = User(
+        name='Ana', fullname='Ana Paula Silva',
+        address=[Address(email_address='ana@email.br'),
+                 Address(email_address='anapaulas@email.org')]
     )
 
-    patrick = User(name='patrick', fullname='Patrick Cardoso')
+    Joaquim = User(name='joaquim', fullname='Joaquim Silva')
 
     # enviando para o BD (persitência de dados)
-    session.add_all([juliana, sandy, patrick])
+    session.add_all([nalva, ana, joaquim])
 
     session.commit()
 
-stmt = select(User).where(User.name.in_(["juliana", 'sandy']))
+stmt = select(User).where(User.name.in_(["nalva", 'ana']))
 print('Recuperando usuários a partir de condição de filtragem')
 for user in session.scalars(stmt):
     print(user)
 
 stmt_address = select(Address).where(Address.user_id.in_([2]))
-print('\nRecuperando os endereços de email de Sandy')
+print('\nRecuperando os endereços de email de Ana Paula')
 for address in session.scalars(stmt_address):
     print(address)
 

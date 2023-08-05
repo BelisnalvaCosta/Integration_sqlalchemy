@@ -1,0 +1,21 @@
+import sqlite3
+
+assert sqlite3.sqlite_version_info < (3, 10, 0), "bug is fixed in this version"
+
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+
+cursor.execute("create table x (a integer, b integer)")
+cursor.execute("insert into x (a, b) values (1, 1)")
+cursor.execute("insert into x (a, b) values (2, 2)")
+
+cursor.execute("select x.a, x.b from x")
+assert [c[0] for c in cursor.description] == ['a', 'b']
+
+cursor.execute('''
+    select x.a, x.b from x where a=1
+    union
+    select x.a, x.b from x where a=2
+''')
+assert [c[0] for c in cursor.description] == ['a', 'b'], \
+    [c[0] for c in cursor.description]

@@ -11,7 +11,7 @@ for post in posts.find():
     pprint.pprint(post)
 
 print(posts.count_documents({}))
-print(posts.count_documents({"author": "Mike"}))
+print(posts.count_documents({"author": "Ana Paula"}))
 print(posts.count_documents({"tags": "insert"}))
 
 pprint.pprint(posts.find_one({"tags": "insert"}))
@@ -25,8 +25,8 @@ result = db.profiles.create_index([('author', pymongo.ASCENDING)],
 print(sorted(list(db.profiles.index_information())))
 
 user_profile_user = [
-    {'user_id': 211, 'name': 'Luke'},
-    {'user_id': 212, 'name': 'Joao'}]
+    {'user_id': 211, 'name': 'Ana'},
+    {'user_id': 212, 'name': 'Roberto'}]
 
 result = db.profile_user.insert_many(user_profile_user)
 
@@ -41,7 +41,7 @@ for collection in collections:
 for post in posts.find():
     pprint.pprint(post)
 
-# print(posts.delete_one({"author": "Mike"}))
+# print(posts.delete_one({"author": "Ana Paula"}))
 # print(db.profile_user.drop())
 
 client.drop_database('test')
