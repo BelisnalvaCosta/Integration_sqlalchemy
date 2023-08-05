@@ -1,5 +1,5 @@
 # Integration_sqlalchemy
-Integration with sqlAlchemy e mongoDB[^1].
+Integration with sqlAlchemy SQLite e mongoDB[^1].
 
 Este projeto foi feito na IDE Pycharm, na linguagem Python, utilizei algumas bibliotecas.
 
